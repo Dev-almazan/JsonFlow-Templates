@@ -1,0 +1,77 @@
+{
+    "version": "5.0",
+    "screens": [
+        {
+            "id": "PasoUno",
+            "layout": {
+                "type": "SingleColumnLayout",
+                "children": [
+                    {
+                        "type": "TextInput",
+                        "name": "name",
+                        "label": "Nombre completo *",
+                        "input-type": "text",
+                        "required": true
+                    },
+                    {
+                        "type": "TextInput",
+                        "label": "Correo electrónico *",
+                        "name": "email",
+                        "input-type": "email",
+                        "required": true
+                    },
+                    {
+                        "type": "TextInput",
+                        "name": "mobilephone",
+                        "label": "Teléfono *",
+                        "input-type": "number",
+                        "required": true
+                    },
+                    {
+                        "type": "Footer",
+                        "label": "Continuar",
+                        "on-click-action": {
+                            "name": "navigate",
+                            "next": {
+                                "type": "screen",
+                                "name": "PasoDos"
+                            },
+                            "payload": {}
+                        }
+                    }
+                ]
+            },
+            "title": "¡Inscríbete ahora!"
+        },
+        {
+            "id": "PasoDos",
+            "terminal": true,
+            "layout": {
+                "type": "SingleColumnLayout",
+                "children": [
+                    {
+                        "type": "TextInput",
+                        "required": true,
+                        "label": "escuela",
+                        "name": "carrera"
+                    },
+                    {
+                        "type": "Footer",
+                        "label": "Complete",
+                        "on-click-action": {
+                            "name": "complete",
+                            "payload": {
+                                "name": "${screen.PasoUno.form.name}",
+                                "email": "${screen.PasoUno.form.email}",
+                                "mobilephone": "${screen.PasoUno.form.mobilephone}",
+                                "carrera": "${screen.PasoDos.form.carrera}"
+                            }
+                        }
+                    }
+                ]
+            },
+            "title": "¡Inscríbete ahora!",
+            "data": {}
+        }
+    ]
+}
